@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="pos.api.admin/pos.api.admin.csproj" />
+  <Project Path="pos.application/pos.application.csproj" />
+  <Project Path="pos.domain/pos.domain.csproj" />
+  <Project Path="pos.infrastructure/pos.infrastructure.csproj" />
+</Solution>
