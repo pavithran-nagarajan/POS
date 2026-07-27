@@ -1,0 +1,7 @@
+dotnet ef migrations add AddUnsubscribedDateTime1ToUserAccount --project pos.infrastructure --startup-project pos.api.admin
+
+dotnet ef database update --project pos.infrastructure --startup-project pos.api.admin
+
+dotnet ef migrations script --idempotent--project pos.infrastructure --startup-project pos.api.admin -o release.sql
+
+dotnet ef migrations script 20260726150927_RemoveUnsubscribedDateTime1ToUserAccount --idempotent --project pos.infrastructure --startup-project pos.api.admin -o release.sql
