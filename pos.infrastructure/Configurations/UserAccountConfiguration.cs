@@ -8,78 +8,88 @@ namespace pos.infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<UserAccount> entity)
         {
-            entity.ToTable("User_Account");
+            entity.ToTable("user_account");
 
             entity.HasKey(e => e.UserId);
 
             entity.Property(e => e.UserId)
-                .HasColumnName("User_ID")
+                .HasColumnName("user_id")
+                .HasColumnType("int")
+                .UseIdentityColumn()
                 .ValueGeneratedOnAdd();
 
-            entity.Property(e => e.UserIdGuid)
-                .HasColumnName("User_ID_GUID")
-                .ValueGeneratedOnAdd();
+            entity.Property(e => e.CompanyId)
+                .HasColumnName("company_id")
+                .HasColumnType("int")
+                .IsRequired();
 
             entity.Property(e => e.UserName)
-                .HasColumnName("User_Name")
-                .HasMaxLength(50)
+                .HasColumnName("user_name")
+                .HasColumnType("varchar(50)")
                 .IsRequired();
 
             entity.Property(e => e.PasswordHash)
-                .HasColumnName("Password_Hash")
-                .HasMaxLength(256)
+                .HasColumnName("password_hash")
+                .HasColumnType("varchar(256)")
                 .IsRequired();
 
             entity.Property(e => e.UserPINHash)
-                .HasColumnName("User_PIN_Hash")
-                .HasMaxLength(256)
+                .HasColumnName("user_pin_hash")
+                .HasColumnType("varchar(256)")
                 .IsRequired();
 
             entity.Property(e => e.BitSuperAdmin)
-                .HasColumnName("Bit_Super_Admin")
+                .HasColumnName("bit_super_admin")
+                .HasColumnType("bit")
                 .HasDefaultValue(false);
 
             entity.Property(e => e.StaffName)
-                .HasColumnName("Staff_Name")
-                .HasMaxLength(100);
+                .HasColumnName("staff_name")
+                .HasColumnType("nvarchar(100)");
 
             entity.Property(e => e.EmailAddress)
-                .HasColumnName("Email_Address")
-                .HasMaxLength(254);
+                .HasColumnName("email_address")
+                .HasColumnType("varchar(254)");
 
             entity.Property(e => e.MobileNoCountryCode)
-                .HasColumnName("Mobile_No_Country_Code")
-                .HasMaxLength(4);
+                .HasColumnName("mobile_no_country_code")
+                .HasColumnType("varchar(4)");
 
             entity.Property(e => e.MobileNo)
-                .HasColumnName("Mobile_No")
-                .HasMaxLength(15);
+                .HasColumnName("mobile_no")
+                .HasColumnType("varchar(15)");
 
             entity.Property(e => e.BitBlocked)
-                .HasColumnName("Bit_Blocked")
+                .HasColumnName("bit_blocked")
+                .HasColumnType("bit")
                 .HasDefaultValue(false);
 
             entity.Property(e => e.BitActive)
-                .HasColumnName("Bit_Active")
+                .HasColumnName("bit_active")
+                .HasColumnType("bit")
                 .HasDefaultValue(true);
 
             entity.Property(e => e.CreatedBy)
-                .HasColumnName("Created_By")
+                .HasColumnName("created_by")
+                .HasColumnType("int")
                 .IsRequired();
 
             entity.Property(e => e.CreatedDateTime)
-                .HasColumnName("Created_DateTime")
+                .HasColumnName("create_datetime")
+                .HasColumnType("datetime2")
                 .IsRequired();
 
             entity.Property(e => e.ModifiedBy)
-                .HasColumnName("Modified_By");
+                .HasColumnName("modified_by")
+                .HasColumnType("int");
 
             entity.Property(e => e.ModifiedDateTime)
-                .HasColumnName("Modified_DateTime");
+                .HasColumnName("modified_datetime")
+                .HasColumnType("datetime2");
 
             // Recommended indexes
-            entity.HasIndex(e => e.UserName).IsUnique();
-            entity.HasIndex(e => e.UserIdGuid).IsUnique();
+            entity.HasIndex(e => e.CompanyId)
+                .HasDatabaseName("ix_user_account_company_id");
         }
     }
 }

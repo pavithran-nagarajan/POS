@@ -9,7 +9,7 @@ namespace pos.domain.Entities
     {
         public long UserId { get; }
 
-        public Guid UserIdGuid { get; } = Guid.NewGuid();
+        public int CompanyId { get; }
 
         public required string UserName { get; set; }
 
@@ -19,23 +19,23 @@ namespace pos.domain.Entities
 
         public bool BitSuperAdmin { get; set; } = false;
 
-        public string StaffName { get; set; }
+        public string? StaffName { get; set; }
 
-        public string EmailAddress { get; set; }
+        public string? EmailAddress { get; set; }
 
-        public string MobileNoCountryCode { get; set; }
+        public string? MobileNoCountryCode { get; set; }
 
-        public string MobileNo { get; set; }
+        public string? MobileNo { get; set; }
 
         public bool BitBlocked { get; set; } = false;
 
         public bool BitActive { get; set; } = true;
 
-        public long CreatedBy { get; set; }
+        public required int CreatedBy { get; set; }
 
-        public DateTime CreatedDateTime { get; set; } = DateTime.UtcNow;
+        public required DateTime CreatedDateTime { get; set; } = DateTime.UtcNow;
 
-        public long? ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
 
         public DateTime? ModifiedDateTime { get; set; }
     }
