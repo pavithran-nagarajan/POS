@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace pos.application.DTOs
+namespace pos.application.DTOs.UserAccount
 {
-    public class UserAccountDTO
+    public class CreateUserAccountDTO
     {
         [Required(ErrorMessage = "User name required")]
         [StringLength(10)]
@@ -13,11 +13,11 @@ namespace pos.application.DTOs
 
         [Required(ErrorMessage = "Password required")]
         [StringLength(256)]
-        public string PasswordHash { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "PIN required")]
         [StringLength(256)]
-        public string UserPINHash { get; set; } = string.Empty;
+        public string UserPIN { get; set; } = string.Empty;
 
         public bool BitSuperAdmin { get; set; } = false;
 

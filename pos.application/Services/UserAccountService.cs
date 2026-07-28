@@ -1,10 +1,7 @@
-﻿using pos.application.DTOs;
+﻿using pos.application.DTOs.UserAccount;
 using pos.application.Interfaces;
 using pos.domain.Entities;
 using pos.domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace pos.application.Services
 {
@@ -17,20 +14,20 @@ namespace pos.application.Services
             _repository = repository;
         }
 
-        public async Task<UserAccount> CreateUser(UserAccountDTO userAccount)
+        public async Task<UserAccount> CreateUser(CreateUserAccountDTO createUserAccountDTO)
         {
             var user = new UserAccount
             {
-                UserName = userAccount.UserName,
-                PasswordHash = userAccount.PasswordHash,
-                UserPINHash = userAccount.UserPINHash,
-                StaffName = userAccount.StaffName,
-                EmailAddress = userAccount.EmailAddress,
-                MobileNoCountryCode = userAccount.MobileNoCountryCode,
-                MobileNo = userAccount.MobileNo,
-                BitBlocked = userAccount.BitBlocked,
-                BitActive = userAccount.BitActive,
-                CreatedBy = userAccount.CreatedBy,
+                UserName = createUserAccountDTO.UserName,
+                PasswordHash = createUserAccountDTO.Password,
+                UserPINHash = createUserAccountDTO.UserPIN,
+                StaffName = createUserAccountDTO.StaffName,
+                EmailAddress = createUserAccountDTO.EmailAddress,
+                MobileNoCountryCode = createUserAccountDTO.MobileNoCountryCode,
+                MobileNo = createUserAccountDTO.MobileNo,
+                BitBlocked = createUserAccountDTO.BitBlocked,
+                BitActive = createUserAccountDTO.BitActive,
+                CreatedBy = createUserAccountDTO.CreatedBy,
                 CreatedDateTime = DateTime.UtcNow
             };
 

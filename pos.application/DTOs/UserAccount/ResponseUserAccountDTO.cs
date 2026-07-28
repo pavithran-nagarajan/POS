@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace pos.domain.Entities
+namespace pos.application.DTOs.UserAccount
 {
-    public class UserAccount
+    public class ResponseUserAccountDTO
     {
         public long UserId { get; set; }
         public int CompanyId { get; set; }
         public string UserName { get; set; } = string.Empty;
-        public string PasswordHash { get; set; } = string.Empty;
-        public string UserPINHash { get; set; } = string.Empty;
         public bool BitSuperAdmin { get; set; } = false;
         public string? StaffName { get; set; }
         public string? EmailAddress { get; set; }
