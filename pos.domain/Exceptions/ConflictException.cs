@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace pos.domain.Exceptions
+{
+    public class ConflictException : AppException
+    {
+        public override int StatusCode => 409;
+        public override string Title => "Conflict";
+
+        public ConflictException(string message) : base(message) { }
+    }
+}
