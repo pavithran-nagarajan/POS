@@ -26,7 +26,7 @@ Log.Logger = new LoggerConfiguration()
         path: "Upload/Logs/log-.txt",
         rollingInterval: RollingInterval.Day,
         retainedFileCountLimit: 30,
-        fileSizeLimitBytes: 100_000_000,
+        fileSizeLimitBytes: 100_000_000,//100 MB
         rollOnFileSizeLimit: true,
         outputTemplate:
             "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] " +
