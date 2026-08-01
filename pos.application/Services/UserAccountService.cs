@@ -25,8 +25,8 @@ namespace pos.application.Services
                 EmailAddress = createUserAccountDTO.EmailAddress,
                 MobileNoCountryCode = createUserAccountDTO.MobileNoCountryCode,
                 MobileNo = createUserAccountDTO.MobileNo,
-                BitBlocked = createUserAccountDTO.BitBlocked,
-                BitActive = createUserAccountDTO.BitActive,
+                IsBlocked = createUserAccountDTO.IsBlocked,
+                IsActive = createUserAccountDTO.IsActive,
                 CreatedBy = createUserAccountDTO.CreatedBy,
                 CreatedDateTime = DateTime.UtcNow
             };

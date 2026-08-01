@@ -55,3 +55,79 @@ END;
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+IF NOT EXISTS (
+    SELECT * FROM [__EFMigrationsHistory]
+    WHERE [MigrationId] = N'20260801061303_CreateTableCompany'
+)
+BEGIN
+    CREATE TABLE [company] (
+        [company_id] int NOT NULL IDENTITY,
+        [company_guid] uniqueidentifier NOT NULL DEFAULT (NEWID()),
+        [company_name] varchar(100) NOT NULL,
+        [is_active] bit NOT NULL DEFAULT CAST(1 AS bit),
+        [created_by] int NOT NULL,
+        [created_at] datetime2 NOT NULL,
+        [modified_by] int NULL,
+        [modified_datetime] datetime2 NULL,
+        CONSTRAINT [PK_company] PRIMARY KEY ([company_id])
+    );
+END;
+
+IF NOT EXISTS (
+    SELECT * FROM [__EFMigrationsHistory]
+    WHERE [MigrationId] = N'20260801061303_CreateTableCompany'
+)
+BEGIN
+    CREATE NONCLUSTERED INDEX [ix_company_company_guid] ON [company] ([company_guid]);
+END;
+
+IF NOT EXISTS (
+    SELECT * FROM [__EFMigrationsHistory]
+    WHERE [MigrationId] = N'20260801061303_CreateTableCompany'
+)
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20260801061303_CreateTableCompany', N'10.0.10');
+END;
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+IF NOT EXISTS (
+    SELECT * FROM [__EFMigrationsHistory]
+    WHERE [MigrationId] = N'20260801062250_UpdateUserAccount'
+)
+BEGIN
+    EXEC sp_rename N'[user_account].[bit_super_admin]', N'is_super_admin', 'COLUMN';
+END;
+
+IF NOT EXISTS (
+    SELECT * FROM [__EFMigrationsHistory]
+    WHERE [MigrationId] = N'20260801062250_UpdateUserAccount'
+)
+BEGIN
+    EXEC sp_rename N'[user_account].[bit_blocked]', N'is_blocked', 'COLUMN';
+END;
+
+IF NOT EXISTS (
+    SELECT * FROM [__EFMigrationsHistory]
+    WHERE [MigrationId] = N'20260801062250_UpdateUserAccount'
+)
+BEGIN
+    EXEC sp_rename N'[user_account].[bit_active]', N'is_active', 'COLUMN';
+END;
+
+IF NOT EXISTS (
+    SELECT * FROM [__EFMigrationsHistory]
+    WHERE [MigrationId] = N'20260801062250_UpdateUserAccount'
+)
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20260801062250_UpdateUserAccount', N'10.0.10');
+END;
+
+COMMIT;
+GO
+

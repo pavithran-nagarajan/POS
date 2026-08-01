@@ -38,8 +38,8 @@ namespace pos.infrastructure.Configurations
                 .HasColumnType("varchar(256)")
                 .IsRequired();
 
-            entity.Property(e => e.BitSuperAdmin)
-                .HasColumnName("bit_super_admin")
+            entity.Property(e => e.IsSuperAdmin)
+                .HasColumnName("is_super_admin")
                 .HasColumnType("bit")
                 .HasDefaultValue(false);
 
@@ -59,13 +59,13 @@ namespace pos.infrastructure.Configurations
                 .HasColumnName("mobile_no")
                 .HasColumnType("varchar(15)");
 
-            entity.Property(e => e.BitBlocked)
-                .HasColumnName("bit_blocked")
+            entity.Property(e => e.IsBlocked)
+                .HasColumnName("is_blocked")
                 .HasColumnType("bit")
                 .HasDefaultValue(false);
 
-            entity.Property(e => e.BitActive)
-                .HasColumnName("bit_active")
+            entity.Property(e => e.IsActive)
+                .HasColumnName("is_active")
                 .HasColumnType("bit")
                 .HasDefaultValue(true);
 

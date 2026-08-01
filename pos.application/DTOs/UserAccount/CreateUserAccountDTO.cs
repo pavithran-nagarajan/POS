@@ -16,7 +16,7 @@ namespace pos.application.DTOs.UserAccount
         [StringLength(256)]
         public string UserPIN { get; set; } = string.Empty;
 
-        public bool BitSuperAdmin { get; set; } = false;
+        public bool IsSuperAdmin { get; set; } = false;
 
         [StringLength(100)]
         public string? StaffName { get; set; }
@@ -30,9 +30,9 @@ namespace pos.application.DTOs.UserAccount
         [StringLength(15)]
         public string? MobileNo { get; set; }
 
-        public bool BitBlocked { get; set; } = false;
+        public bool IsBlocked { get; set; } = false;
 
-        public bool BitActive { get; set; } = true;
+        public bool IsActive { get; set; } = true;
 
         public int CreatedBy { get; set; }
 
