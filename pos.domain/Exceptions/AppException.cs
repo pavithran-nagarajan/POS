@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace pos.domain.Exceptions
 {
     public abstract class AppException : Exception
