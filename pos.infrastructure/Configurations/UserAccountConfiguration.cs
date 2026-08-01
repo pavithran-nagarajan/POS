@@ -18,6 +18,12 @@ namespace pos.infrastructure.Configurations
                 .UseIdentityColumn()
                 .ValueGeneratedOnAdd();
 
+            entity.Property(e => e.UserGuid)
+                .HasColumnName("user_guid")
+                .HasColumnType("uniqueidentifier")
+                .HasDefaultValueSql("NEWID()")
+                .ValueGeneratedOnAdd();
+
             entity.Property(e => e.CompanyId)
                 .HasColumnName("company_id")
                 .HasColumnType("int")
@@ -88,8 +94,9 @@ namespace pos.infrastructure.Configurations
                 .HasColumnType("datetime2");
 
             // Recommended indexes
-            entity.HasIndex(e => e.CompanyId)
-                .HasDatabaseName("ix_user_account_company_id");
+            entity.HasIndex(e => e.UserGuid)
+                .HasDatabaseName("ix_user_account_user_guid")
+                .IsClustered(false);
         }
     }
 }

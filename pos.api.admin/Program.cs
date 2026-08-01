@@ -44,7 +44,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // DI registrations
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
-builder.Services.AddAutoMapper(cfg => { }, typeof(CompanyProfile), typeof(UserAccountProfile));
+builder.Services.AddAutoMapper(cfg => { }, typeof(CompanyProfile));
 builder.Services.AddScoped<IUserAccountRepository, UserAccountRepository>();
 builder.Services.AddScoped<IUserAccountService, UserAccountService>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();

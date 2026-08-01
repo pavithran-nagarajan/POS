@@ -4,6 +4,7 @@ namespace pos.domain.Entities
     public class UserAccount
     {
         public long UserId { get; set; }
+        public Guid UserGuid { get; set; }
         public int CompanyId { get; set; }
         public string UserName { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
