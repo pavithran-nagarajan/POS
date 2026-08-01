@@ -1,4 +1,6 @@
+using AutoMapper;
 using pos.application.DTOs.Company;
+using pos.application.DTOs.UserAccount;
 using pos.application.Interfaces;
 using pos.domain.Entities;
 using pos.domain.Interfaces;
@@ -8,23 +10,21 @@ namespace pos.application.Services
     public class CompanyService : ICompanyService
     {
         private readonly ICompanyRepository _repository;
+        private readonly IMapper _mapper;
 
-        public CompanyService(ICompanyRepository repository)
+        public CompanyService(ICompanyRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
-        public async Task<Company> CreateCompany(CreateCompanyDTO createCompanyDTO)
+        public async Task<ResponseCompanyDTO> CreateCompany(CreateCompanyDTO createCompanyDTO)
         {
-            var company = new Company
-            {
-                CompanyName = createCompanyDTO.CompanyName,
-                IsActive = createCompanyDTO.IsActive,
-                CreatedBy = createCompanyDTO.CreatedBy,
-                CreatedDateTime = DateTime.UtcNow
-            };
+            var company = _mapper.Map<Company>(createCompanyDTO);
+            company.CreatedDateTime = DateTime.UtcNow;
 
-            return await _repository.CreateCompany(company);
+            var created = await _repository.CreateCompany(company);
+            return _mapper.Map<ResponseCompanyDTO>(created);
         }
     }
 }

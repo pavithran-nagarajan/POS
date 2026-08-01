@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using pos.application.Interfaces;
+using pos.application.Mappings;
 using pos.application.Services;
 using pos.domain.Interfaces;
 using pos.infrastructure.Data;
@@ -43,6 +44,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // DI registrations
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
+builder.Services.AddAutoMapper(cfg => { }, typeof(CompanyProfile), typeof(UserAccountProfile));
 builder.Services.AddScoped<IUserAccountRepository, UserAccountRepository>();
 builder.Services.AddScoped<IUserAccountService, UserAccountService>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();

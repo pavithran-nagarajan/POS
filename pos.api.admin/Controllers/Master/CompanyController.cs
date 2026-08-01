@@ -22,7 +22,7 @@ namespace pos.api.admin.Controllers.Master
                 return BadRequest(ModelState);
 
             var result = await _companyService.CreateCompany(createCompanyDTO);
-            return CreatedAtAction(nameof(Create), new { id = result.CompanyId }, result);
+            return CreatedAtAction(nameof(Create), new { id = result.CompanyGuid }, result);
         }
     }
 }

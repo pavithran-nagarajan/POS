@@ -1,4 +1,6 @@
-﻿using pos.application.DTOs.UserAccount;
+﻿using AutoMapper;
+using pos.application.DTOs.Company;
+using pos.application.DTOs.UserAccount;
 using pos.application.Interfaces;
 using pos.domain.Entities;
 using pos.domain.Interfaces;
@@ -8,30 +10,21 @@ namespace pos.application.Services
     public class UserAccountService : IUserAccountService
     {
         private readonly IUserAccountRepository _repository;
+        private readonly IMapper _mapper;
 
-        public UserAccountService(IUserAccountRepository repository)
+        public UserAccountService(IUserAccountRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
-        public async Task<UserAccount> CreateUser(CreateUserAccountDTO createUserAccountDTO)
+        public async Task<ResponseUserAccountDTO> CreateUser(CreateUserAccountDTO createUserAccountDTO)
         {
-            var user = new UserAccount
-            {
-                UserName = createUserAccountDTO.UserName,
-                PasswordHash = createUserAccountDTO.Password,
-                UserPINHash = createUserAccountDTO.UserPIN,
-                StaffName = createUserAccountDTO.StaffName,
-                EmailAddress = createUserAccountDTO.EmailAddress,
-                MobileNoCountryCode = createUserAccountDTO.MobileNoCountryCode,
-                MobileNo = createUserAccountDTO.MobileNo,
-                IsBlocked = createUserAccountDTO.IsBlocked,
-                IsActive = createUserAccountDTO.IsActive,
-                CreatedBy = createUserAccountDTO.CreatedBy,
-                CreatedDateTime = DateTime.UtcNow
-            };
+            var user = _mapper.Map<UserAccount>(createUserAccountDTO);
+            user.CreatedDateTime = DateTime.UtcNow;
 
-            return await _repository.CreateUser(user);
+            var created = await _repository.CreateUser(user);
+            return _mapper.Map<ResponseUserAccountDTO>(created);
         }
     }
 }

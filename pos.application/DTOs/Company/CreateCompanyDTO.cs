@@ -1,9 +1,10 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace pos.application.DTOs.Company
 {
     public class CreateCompanyDTO
     {
+
         [Required(ErrorMessage = "Company name required")]
         [StringLength(100)]
         public string CompanyName { get; set; } = string.Empty;

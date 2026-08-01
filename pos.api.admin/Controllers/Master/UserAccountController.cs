@@ -22,7 +22,7 @@ namespace pos.api.admin.Controllers.Master
                 return BadRequest(ModelState);
 
             var result = await _userAccountService.CreateUser(createUserAccountDTO);
-            return CreatedAtAction(nameof(Create), new { id = result.UserId }, result);
+            return CreatedAtAction(nameof(Create), new { id = result.UserGuid }, result);
         }
     }
 }
