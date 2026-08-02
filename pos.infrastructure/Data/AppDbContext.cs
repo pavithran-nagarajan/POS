@@ -9,6 +9,7 @@ namespace pos.infrastructure.Data
 
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<RefreshToken> RefreshToken { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
