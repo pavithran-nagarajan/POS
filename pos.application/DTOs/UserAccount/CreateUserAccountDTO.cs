@@ -36,10 +36,10 @@ namespace pos.application.DTOs.UserAccount
 
         public int CreatedBy { get; set; }
 
-        public DateTime CreatedDateTime { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public int? ModifiedBy { get; set; }
 
-        public DateTime? ModifiedDateTime { get; set; }
+        public DateTime? ModifiedAt { get; set; }
     }
 }

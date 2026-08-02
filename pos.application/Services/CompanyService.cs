@@ -21,7 +21,7 @@ namespace pos.application.Services
         public async Task<ResponseCompanyDTO> CreateCompany(CreateCompanyDTO createCompanyDTO)
         {
             var company = _mapper.Map<Company>(createCompanyDTO);
-            company.CreatedDateTime = DateTime.UtcNow;
+            company.CreatedAt = DateTime.UtcNow;
 
             var created = await _repository.CreateCompany(company);
             return _mapper.Map<ResponseCompanyDTO>(created);

@@ -39,7 +39,7 @@ namespace pos.infrastructure.Configurations
                 .HasColumnType("int")
                 .IsRequired();
 
-            entity.Property(e => e.CreatedDateTime)
+            entity.Property(e => e.CreatedAt)
                 .HasColumnName("created_at")
                 .HasColumnType("datetime2")
                 .IsRequired();
@@ -48,8 +48,8 @@ namespace pos.infrastructure.Configurations
                 .HasColumnName("modified_by")
                 .HasColumnType("int");
 
-            entity.Property(e => e.ModifiedDateTime)
-                .HasColumnName("modified_datetime")
+            entity.Property(e => e.ModifiedAt)
+                .HasColumnName("modified_at")
                 .HasColumnType("datetime2");
 
             // Recommended indexes

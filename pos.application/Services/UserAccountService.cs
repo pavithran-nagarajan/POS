@@ -21,7 +21,7 @@ namespace pos.application.Services
         public async Task<ResponseUserAccountDTO> CreateUser(CreateUserAccountDTO createUserAccountDTO)
         {
             var user = _mapper.Map<UserAccount>(createUserAccountDTO);
-            user.CreatedDateTime = DateTime.UtcNow;
+            user.CreatedAt = DateTime.UtcNow;
 
             var created = await _repository.CreateUser(user);
             return _mapper.Map<ResponseUserAccountDTO>(created);
